@@ -1,5 +1,6 @@
 import ReactPlayer from "react-player";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const VideoPlayer = ({ video }) => {
   if (!video) {
@@ -7,11 +8,14 @@ const VideoPlayer = ({ video }) => {
   }
 
   return (
-    <div className="border p-4 rounded">
-      <h3 className="text-lg font-bold">{video.title}</h3>
-      <p>{video.description}</p>
+    <Link to={`/video-list/${video._id}`}>
+    <div className="border p-4 rounded bg-white">
+     
       <ReactPlayer url={video.fileUrl} controls width="100%" height="300px" />
+      <h3 className="text-lg font-bold">{video.title}</h3>
+      <p>{video.tags}</p>
     </div>
+    </Link>
   );
 };
 

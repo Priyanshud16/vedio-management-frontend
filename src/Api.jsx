@@ -1,8 +1,14 @@
 import axios from "axios";
 
-// Define your backend API base URL
+const NODE_ENV = "development";
 
-const API_BASE_URL = "https://vedio-managementb-2.onrender.com/api"; // Change this to your backend URL
+// Determine the base URL based on the environment
+const API_BASE_URL = "https://vedio-managementb-3.onrender.com/api";
+
+// const API_BASE_URL =
+//   NODE_ENV === "development"
+//     ? "http://localhost:8000/api"
+//     : "https://vedio-managementb-3.onrender.com/api";
 
 // Create an Axios instance
 const api = axios.create({

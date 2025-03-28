@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import React from "react";
-import axios from "../api";
+import axios from "../Api";
 import VideoPlayer from "./VideoPlayer";
 
 const VideoList = () => {
@@ -30,11 +30,14 @@ const VideoList = () => {
   }, []);
   
   return (
-    <div className="p-4">
-      {videos.length === 0 ? <p>No videos found</p> : videos.map((video) => (
-        <VideoPlayer key={video._id} video={video} />
-      ))}
-    </div>
+    <div className="p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 bg-purple-700">
+    {videos.length === 0 ? (
+      <p className="col-span-4 text-center">No videos found</p>
+    ) : (
+      videos.map((video) => <VideoPlayer key={video._id} video={video} />)
+    )}
+  </div>
+  
   );
 };
 

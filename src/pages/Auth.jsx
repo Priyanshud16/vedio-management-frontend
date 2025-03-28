@@ -1,28 +1,37 @@
-import React, { useState } from "react";
-import axios from "../api";
+import React, { useContext, useState } from "react";
+import axios from "../Api";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../components/AuthContextProvider";
 
 const Auth = ({ type }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-
+const {Login}=useContext(AuthContext)
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const endpoint = type === "signup" ? "auth/signup" : "auth/login";
+    const endpoint = type === "signup" ? "auth/register" : "auth/login";
 
     try {
       const { data } = await axios.post(endpoint, { username, password });
       localStorage.setItem("token", data.token);
+      {
+        type ==='login'? Login(data.token) : null
+      }
+      
+      {
+      type==='signup'? alert("signup sucessfully") : alert("Login sucessfully")
+      }
       navigate("/dashboard");
     } catch (error) {
       console.error("Auth error", error);
+      alert("Invalid credintials")
     }
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-purple-800">
+    <div className="flex justify-center items-center min-h-screen bg-purple-700">
       <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-md">
         <h2 className="text-2xl font-semibold text-gray-800 text-center mb-4">
           {type === "signup" ? "Sign Up" : "Login"}

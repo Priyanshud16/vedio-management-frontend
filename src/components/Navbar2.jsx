@@ -5,8 +5,11 @@ function Navbar2() {
   return (
     <nav className="bg-purple-600 text-white p-4 shadow-md">
       <div className="container mx-auto flex justify-between items-center">
-        <div className="text-2xl font-bold">Sierra</div>
+        <div className="text-2xl font-bold"><Link to='/'>Sierra</Link></div>
         <ul className="hidden md:flex space-x-6">
+        <li className="hover:text-gray-300 cursor-pointer">
+            <Link to="/login">login</Link>
+          </li>
           <li className="hover:text-gray-300 cursor-pointer">
             <Link to="/video-upload">Video Upload</Link>
           </li>
