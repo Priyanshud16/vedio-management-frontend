@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import axios from "../api";
+import axios from "../Api";
 
 const VideoUpload = () => {
   const [formData, setFormData] = useState({
